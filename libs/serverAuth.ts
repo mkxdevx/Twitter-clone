@@ -1,14 +1,16 @@
 import { NextApiRequest } from "next";
+import prisma from "@/libs/prismadb";
 import { getSession } from "next-auth/react";
 
 const serverAuth = async (req: NextApiRequest) => {
-  const session = await getSession({ req });
+  const session = await getSession({req});
+  console.log(req)
 
   if (!session?.user?.email) {
     throw new Error("Not signed in");
   }
 
-  const currentUser = await prisma?.user.findUnique({
+  const currentUser = await prisma.user.findUnique({
     where: {
       email: session.user.email,
     },

@@ -6,9 +6,9 @@ import RegisterModal from "@/components/modals/RegisterModal";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <SessionProvider session={pageProps.session}>
+    <SessionProvider session={session}>
       <Toaster />
       <RegisterModal />
       <LoginModal />

@@ -1,5 +1,5 @@
-import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
+import bcrypt from "bcryptjs";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
@@ -37,7 +37,6 @@ export default NextAuth({
         if (!isCorrectPassword) {
           throw new Error("Invalid credentials");
         }
-
         return user;
       },
     }),
@@ -50,4 +49,4 @@ export default NextAuth({
     secret: process.env.NEXTAUTH_JWT_SECRET,
   },
   secret: process.env.NEXTAUTH_SECRET,
-});
+})
