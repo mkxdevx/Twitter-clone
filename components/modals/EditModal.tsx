@@ -19,18 +19,14 @@ const EditModal = () => {
   const [bio, setBio] = useState("");
 
   useEffect(() => {
-    setProfileImage(currentUser?.profileImage);
-    setCoverImage(currentUser?.coverImage);
-    setName(currentUser?.name);
-    setUsername(currentUser?.username);
-    setBio(currentUser?.bio);
-  }, [
-    currentUser?.name,
-    currentUser?.username,
-    currentUser?.bio,
-    currentUser?.coverImage,
-    currentUser?.profileImage,
-  ]);
+    if(currentUser) {
+      setProfileImage(currentUser?.profileImage || '');
+    setCoverImage(currentUser?.coverImage || '');
+    setName(currentUser?.name || '');
+    setUsername(currentUser?.username || '');
+    setBio(currentUser?.bio || '');
+    }
+  }, [currentUser]);
 
   const [isLoading, setIsLoading] = useState(false);
   const onSubmit = useCallback(async () => {
@@ -97,6 +93,9 @@ const EditModal = () => {
       />
     </div>
   );
+  if(!currentUser) {
+    return null;
+  }
   return (
     <Modal
       disabled={isLoading}

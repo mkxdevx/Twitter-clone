@@ -37,7 +37,7 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
     return formatDistanceToNowStrict(new Date(data.createdAt))
   }, [data?.createdAt])
 
-  return <div>PostItem</div>;
+  return <div onClick={goToPost} className="border-b-[1px] border-neutral-800 p-5 cursor-pointer hover:bg-neutral-900 transition"></div>;
 };
 
 export default PostItem;
