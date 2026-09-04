@@ -28,12 +28,12 @@ export default async function handler(
       },
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       ...existingUser,
       followersCount,
     });
   } catch (error) {
     console.log(error);
-    res.status(400).end();
+    return res.status(400).end();
   }
 }

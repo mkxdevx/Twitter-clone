@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest } from "next";
 import prisma from "@/libs/prismadb";
 import { getSession } from "next-auth/react";
 

@@ -9,7 +9,7 @@ import Input from "../Input";
 import ImageUpload from "../ImageUpload";
 
 const EditModal = () => {
-  const { data: currentUser } = useCurrentUser();
+  const { data: currentUser = [] } = useCurrentUser();
   const { mutate: mutatedFetchedUser } = useUser(currentUser?.id);
   const editModal = useEditModal();
   const [profileImage, setProfileImage] = useState("");
